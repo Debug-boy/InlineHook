@@ -100,6 +100,10 @@ public:
 		return true;
 	}
 
+	bool run(const unsigned char* shellCode,const unsigned int codeSize, unsigned char transfer_cmd = HOOK_CMD_CALL) {
+		run(std::vector<unsigned char>(shellCode, shellCode + codeSize), transfer_cmd);
+	}
+
 	bool restore() {
 		if (*m_pre_transferCommand) {
 			try {
